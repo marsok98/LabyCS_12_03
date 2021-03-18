@@ -17,7 +17,7 @@ namespace LabyCS_12_03
 		{
 			long k;
 			double value_0_1;
-			long m = 2147483647l, a = 16807l, b = 127773l, c = 2836l;
+			long m = 2147483647, a = 16807, b = 127773, c = 2836;
 
 			k = seed / b;
 			seed = a * (seed % b) - k * c;
