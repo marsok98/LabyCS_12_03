@@ -69,8 +69,25 @@ namespace LabyCS_12_03
             {
                 list.Add(new Item(rngToWeights.nextInt(1, 29), rngToValues.nextInt(1, 29)));
             }
+            SortListByRatio();
+                    
+        }
+
+        public void AddItemToListManual(Item item)
+        {
+            list.Add(item);
+            SortListByRatio();
+        }
+
+        public void  SortListByRatio()
+        {
             list.Sort((x, y) => x.Ratio.CompareTo(y.Ratio));
-            list.Reverse();        
+            list.Reverse();
+        }
+
+        public ListOfItem()
+        {
+
         }
 
         public void DisplayList()
@@ -126,12 +143,17 @@ namespace LabyCS_12_03
             }
         }
 
-        public void robTheHouse(ListOfItem availableItems)
+        public bool robTheHouse(ListOfItem availableItems)
         {
+            int amountBeforeRob = itemsOnBackPack.Count();
             foreach(Item item in availableItems.List)
             {
                 Add(item);
             }
+            int amountAfterRob = itemsOnBackPack.Count();
+            if (amountAfterRob == amountBeforeRob) return false;
+            else return true;
+
         }
 
         public void showWhatYouVeStolen()
