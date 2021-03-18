@@ -35,7 +35,8 @@ namespace LabyCS_12_03
         {
             this.weight = weight;
             this.value = value;
-            this.ratio = (float)value / (float)weight;
+            if (weight != 0) this.ratio = (float)value / (float)weight;
+            else ratio = 0;
         }
         public Item()
         {
@@ -47,6 +48,19 @@ namespace LabyCS_12_03
         {
             return ("Waga: " + weight + " Wartosc: " + value + " Stosunek: " + ratio);
         }
+        public static bool operator ==(Item compare, Item toCompare)
+        {
+            if (compare.Value == toCompare.Value && compare.Weight == compare.Weight) return true;
+            else return false;     
+        }
+
+        public static bool operator !=(Item compare, Item toCompare)
+        {
+            if (compare.Value == toCompare.Value && compare.Weight == compare.Weight) return false;
+            else return true;
+        }
+
+
     }
 
     public class ListOfItem
@@ -97,6 +111,24 @@ namespace LabyCS_12_03
                 System.Console.WriteLine(x.GetStringFromItem());
             }
         }
+
+        public static bool operator ==(ListOfItem compare, ListOfItem toCompare)
+        {
+            for(int i = 0;i<compare.List.Count();i++)
+            {
+                if (compare.List[i] != toCompare.List[i]) return false;  
+            }
+            return true;
+        }
+        public static bool operator != (ListOfItem compare, ListOfItem toCompare)
+        {
+            for (int i = 0; i < compare.List.Count(); i++)
+            {
+                if (compare.List[i] != toCompare.List[i]) return true;
+            }
+            return false;
+        }
+
     }
 
     public class BackPack

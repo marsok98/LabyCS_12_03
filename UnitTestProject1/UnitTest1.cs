@@ -46,6 +46,46 @@ namespace UnitTestProject1
 
             Assert.AreEqual(bb1.CurrentCapacity, bb2.CurrentCapacity);//jak zmierzyć obiekty, same nie dziala
         }
+        [TestMethod]
+        public void The_Same_Seed_Then_The_Same_Result()
+        {
+            ListOfItem list1 = new ListOfItem(4, 2, 10);
+            ListOfItem list2 = new ListOfItem(4, 2, 10);
+
+            Assert.IsTrue(list1==list2);
+        }
+
+        [TestMethod]
+        public void The_Different_Seed_Then_The_Different_Result()
+        {
+            ListOfItem list1 = new ListOfItem(4, 2, 10);
+            ListOfItem list2 = new ListOfItem(5, 2, 10);
+
+            Assert.IsFalse(list1 == list2);
+        }
+        [TestMethod]
+        public void Default_Constructor_And_Parameterized_With_Zero_Then_The_Same()
+        {
+            Item item1 = new Item();
+            Item item2 = new Item(0, 0);
+
+            Assert.IsTrue(item1 == item2);
+        }
+        [TestMethod]
+        public void The_Same_List_Then_Equal()
+        {
+            ListOfItem list1 = new ListOfItem();
+            list1.AddItemToListManual(new Item(20, 5));
+            list1.AddItemToListManual(new Item(5, 5));
+
+            ListOfItem list2 = new ListOfItem();
+            list2.AddItemToListManual(new Item(20, 5));
+            list2.AddItemToListManual(new Item(5, 5));
+
+            Assert.IsTrue(list1 == list2);
+        }
+
+
 
 
 
