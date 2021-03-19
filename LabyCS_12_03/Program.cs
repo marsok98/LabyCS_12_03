@@ -46,7 +46,7 @@ namespace LabyCS_12_03
         }
         public string GetStringFromItem()
         {
-            return ("Waga: " + weight + " Wartosc: " + value + " Stosunek: " + ratio);
+            return ("Waga: " + weight + " Wartosc: " + value+"||");
         }
         public static bool operator ==(Item compare, Item toCompare)
         {
@@ -86,7 +86,15 @@ namespace LabyCS_12_03
             SortListByRatio();
                     
         }
-
+        public string getStringFromList()
+        {
+            string returnValue = "";
+            foreach (Item x in list)
+            {
+                returnValue += "\n" + x.GetStringFromItem() + " ";
+            }
+            return returnValue;
+        }
         public void AddItemToListManual(Item item)
         {
             list.Add(item);
@@ -195,7 +203,16 @@ namespace LabyCS_12_03
                 Console.WriteLine(item.GetStringFromItem());
             }
         }
-
+        public string getStringFromBackPack()
+        {
+            string returnValue = "";
+            foreach (Item x in itemsOnBackPack)
+            {
+                returnValue += "\n" + x.GetStringFromItem() + " ";
+            }
+            return returnValue;
+        }
+        
     }
 
     class Program
